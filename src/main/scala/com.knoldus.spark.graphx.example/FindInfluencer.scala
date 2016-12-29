@@ -35,7 +35,7 @@ object FindInfluencer {
     val defaultUser = ("")
     val graph = Graph(vertices, edges, defaultUser)
 
-    val subGraph = graph.pregel("", 3, EdgeDirection.In)((_, attr, msg) =>
+    val subGraph = graph.pregel("", 2, EdgeDirection.In)((_, attr, msg) =>
       attr + "," + msg,
       triplet => Iterator((triplet.srcId, triplet.dstAttr)),
       (a, b) => (a + "," + b))
